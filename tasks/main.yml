@@ -105,7 +105,7 @@
   command: awk '$0 ~ /\/CN={{ item }}\// {print $1; exit}' "{{ easy_rsa_key_dir }}/index.txt"
   register: certificate_index
   with_items: "{{ easy_rsa_clients_revoke }}"
-  always_run: true
+  check_mode: false
 
 - name: Revoke client certificates
   become: yes
